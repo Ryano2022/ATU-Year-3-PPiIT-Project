@@ -20,9 +20,11 @@ public class Collectable : MonoBehaviour
             // Destroy the collectable.
             Destroy(gameObject);
 
+            // Trying to find the point counter for testing purposes.
+            //Debug.Log(GameObject.Find("Point Counter").GetComponent<PointCounter>().ToString());
+
             // Update the point counter.
-            Debug.Log(GameObject.Find("PointCounter").GetComponent<PointCounter>().ToString());
-            GameObject.Find("PointCounter").GetComponent<PointCounter>().UpdatePoints(points);
+            GameObject.Find("Point Counter").GetComponent<PointCounter>().UpdatePoints(points);
         }
     }
 }   

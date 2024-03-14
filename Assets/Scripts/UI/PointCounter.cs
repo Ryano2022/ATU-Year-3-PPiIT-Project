@@ -11,6 +11,6 @@ public class PointCounter : MonoBehaviour
         // Set the new points.
         points = newPoints;
         // Update the UI.
-        GetComponent<UnityEngine.UI.Text>().text = "Points: " + points;
+        GetComponent<TMPro.TextMeshProUGUI>().text = "Points: " + points;
     }
 }
