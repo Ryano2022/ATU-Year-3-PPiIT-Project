@@ -5,6 +5,7 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     [SerializeField] public int points = 0; // Points awarded to the player. Starts with 0.
+    [SerializeField] private float lifeTime = 5.0f; // Time before the collectable disappears.
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,4 +28,10 @@ public class Collectable : MonoBehaviour
             GameObject.Find("Point Counter").GetComponent<PointCounter>().UpdatePoints(points);
         }
     }
+
+    // Start is called before the first frame update.
+    void Start() {
+        // Destroy the collectable after a certain amount of time.
+        Destroy(gameObject, lifeTime);
+    }   
 }   
