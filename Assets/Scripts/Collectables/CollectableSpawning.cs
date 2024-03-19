@@ -5,9 +5,9 @@ using UnityEngine;
 public class CollectableSpawning : MonoBehaviour
 {
     [SerializeField] private GameObject collectablePrefab;
-    [SerializeField] private int amountToSpawn = 5;
-    [SerializeField] private float spawnInterval = 1.0f;
+    [SerializeField] private float spawnInterval = 2.5f;
     private CollectableSP[] spawnPoints;
+    private float spawnTimer = 0.0f;
 
     // Start is called before the first frame update.
     void Start() {
@@ -23,35 +23,28 @@ public class CollectableSpawning : MonoBehaviour
         }
 
         // Spawn the collectables.
-        SpawnCollectables();
+        SpawnCollectable();
     }
 
-    // Update is called once per frame.
-    void Update()
-    {
-        // Check if it's time to spawn a new collectable.
-        if (Time.time >= spawnInterval)
-        {
-            // Spawn the collectables.
-            SpawnCollectables();
-
-            // Reset the spawn interval.
-            spawnInterval = Time.time + spawnInterval;
+    void Update() {
+        // Check to make sure the timer hasn't ended before spawning.
+        if(!(Timer.levelTime <= 0)) {
+            spawnTimer += Time.deltaTime;
+            if(spawnTimer >= spawnInterval) {
+                SpawnCollectable();
+                spawnTimer = 0.0f;
+            }   
         }
     }
 
+    private void SpawnCollectable() {
+        // Get a random spawn point.
+        int randomIndex = Random.Range(0, spawnPoints.Length);
+        CollectableSP spawnPoint = spawnPoints[randomIndex];
+        Debug.Log("Spawn point: " + spawnPoint.name);
 
-    // Spawn the collectables.
-    private void SpawnCollectables() {
-        for(int i = 0; i < amountToSpawn; i++) {
-            // Get a random spawn point.
-            int randomIndex = Random.Range(0, spawnPoints.Length);
-            CollectableSP spawnPoint = spawnPoints[randomIndex];
-            Debug.Log("Spawn point: " + spawnPoint.name);
-
-            // Spawn the collectable.
-            GameObject collectable = Instantiate(collectablePrefab, spawnPoint.transform.position, Quaternion.identity);
-            Debug.Log("Collectable spawned. ");
-        }
+        // Spawn the collectable.
+        GameObject collectable = Instantiate(collectablePrefab, spawnPoint.transform.position, Quaternion.identity);
+        Debug.Log("Collectable spawned. ");
     }
 }
