@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,12 +15,14 @@ public class GameManager : MonoBehaviour
 
 
     void Start() {
+        // Find the game objects.
         basket = GameObject.Find("Basket");
         timer = GameObject.Find("Timer");
         pointCounter = GameObject.Find("Point Counter");
         endPanel = GameObject.Find("End Panel");
 
-        RestartLevel();
+        // Hide the end panel.
+        endPanel.SetActive(false);
     }
 
     // Ending the level.
@@ -55,7 +58,7 @@ public class GameManager : MonoBehaviour
         endPanel.SetActive(false);
 
         // Reset the timer and points.
-        Timer.levelTime = 10.0f;
+        Timer.levelTime = 30.0f;
         points = 0;
         UpdatePoints();
 
