@@ -161,6 +161,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.ryano.FruitCollector
     Standalone: com.DefaultCompany.2DProject
   buildNumber:
     Standalone: 0
