@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         timer = GameObject.Find("Timer");
         pointCounter = GameObject.Find("Point Counter");
         endPanel = GameObject.Find("End Panel");
-        
+
         RestartLevel();
     }
 
@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
 
         // Show the end panel.
         endPanel.SetActive(true);
+
+        // Save the high score.
+        HighScoreCounter.SaveHighScore();
     }
 
     // Restarting the level.
