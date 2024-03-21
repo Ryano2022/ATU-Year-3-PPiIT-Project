@@ -23,6 +23,7 @@ public class Collectable : MonoBehaviour
             // Award the player with a point.
             GameManager.points++;
             GameManager.UpdatePoints();
+            HighScoreCounter.UpdateHighScore();
             Debug.Log("Collected: " + gameObject.name + "\nAdded one point.\nCurrent Points: " + GameManager.points);
 
             // Trying to find the point counter for testing purposes.
