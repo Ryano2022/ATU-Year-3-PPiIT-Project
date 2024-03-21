@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class PointCounter : MonoBehaviour
 {
-    public void UpdatePoints(int newPoints) {
-        // Update the UI.
-        GetComponent<TMPro.TextMeshProUGUI>().text = "Points: " + GameManager.points.ToString();
-    }
+    // Text component for the point counter.
 }
