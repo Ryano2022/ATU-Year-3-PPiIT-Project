@@ -15,7 +15,7 @@ public class CollectableSpawning : MonoBehaviour
         spawnPoints = FindObjectsOfType<CollectableSP>();
 
         if(spawnPoints.Length > 0) {
-            Debug.Log("Spawn points found: " + spawnPoints.Length);
+            Debug.Log("Number of spawn points found: " + spawnPoints.Length);
         }
         else {
             Debug.Log("No spawn points found. ");
@@ -41,10 +41,9 @@ public class CollectableSpawning : MonoBehaviour
         // Get a random spawn point.
         int randomIndex = Random.Range(0, spawnPoints.Length);
         CollectableSP spawnPoint = spawnPoints[randomIndex];
-        Debug.Log("Spawn point: " + spawnPoint.name);
+        Debug.Log("Spawned a collectable at " + spawnPoint.name);
 
         // Spawn the collectable.
         GameObject collectable = Instantiate(collectablePrefab, spawnPoint.transform.position, Quaternion.identity);
-        Debug.Log("Collectable spawned. ");
     }
 }
