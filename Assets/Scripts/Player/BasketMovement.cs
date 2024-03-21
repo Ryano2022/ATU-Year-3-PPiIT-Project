@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 3.5f;
+    [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float minX = -2f;
     [SerializeField] private float maxX = 2f;
     private Rigidbody2D rb;
@@ -19,7 +19,10 @@ public class NewBehaviourScript : MonoBehaviour
         // Get the acceleration from the device and add force.
         Vector2 acceleration = Input.acceleration;
         acceleration.y = 0f; // Lock the y axis.
-        rb.AddForce(acceleration * moveSpeed);
+        if(Timer.levelTime <= 0) {
+            acceleration.x = 0f; // Lock the x axis.
+        }
+        rb.velocity = acceleration * moveSpeed;
 
         // Clamp the position within the boundaries
         Vector2 stayInBounds = transform.position;
