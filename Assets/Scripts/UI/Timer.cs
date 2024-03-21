@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] public static float levelTime = 30.0f;
+    public static float levelTime = 5.0f;
     // Get the text component of the game object.
     private TMPro.TextMeshProUGUI timerText;
 
@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
         }
         // If the time is less than or equal to 0, end the level.
         else if(levelTime <= 0) {
-            
+            GameManager.EndLevel();
         }
     }
 }
